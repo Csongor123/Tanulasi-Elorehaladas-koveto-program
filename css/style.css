@@ -248,3 +248,13 @@ h1 {
 .result {
     color: #79c0ff;
 }
+
+.output-log {
+    margin-top: 4px;
+    padding: 8px;
+    border-radius: 6px;
+    background: #111;
+    color: #0f0;
+    font-family: monospace;
+    font-size: 14px;
+}
