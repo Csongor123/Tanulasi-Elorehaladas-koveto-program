@@ -1,9 +1,54 @@
 let completed = loadProgress();
 
 window.addEventListener("DOMContentLoaded", () => {
+    completed = loadProgress();   
+    initUserBar();                
     renderLessons();
     updateStats();
 });
+
+
+function initUserBar() {
+    const select = document.getElementById("userSelect");
+    if (!select) return;
+
+    const current = getActiveUser();
+    const users = getUsers();
+
+   
+    if (!users.includes(current)) {
+        users.push(current);
+    }
+
+    select.innerHTML = "";
+    users.forEach(name => {
+        const opt = document.createElement("option");
+        opt.value = name;
+        opt.textContent = name;
+        if (name === current) opt.selected = true;
+        select.appendChild(opt);
+    });
+
+    select.onchange = () => {
+        setActiveUser(select.value);
+        completed = loadProgress();
+        renderLessons();
+        updateStats();
+    };
+}
+
+function addUser() {
+    const name = prompt("Új felhasználó neve:");
+    if (!name) return;
+
+    setActiveUser(name);
+    completed = loadProgress();   
+    initUserBar();
+    renderLessons();
+    updateStats();
+}
+
+
 
 function renderLessons() {
     const container = document.getElementById("lessonsContainer");
@@ -24,18 +69,9 @@ function renderLessons() {
             <a class="view-btn" href="lesson.html?id=${lesson.id}">Megnyitás</a>
         `;
 
-        div.addEventListener("click", () => toggleComplete(lesson.id));
+        
         container.appendChild(div);
     });
-}
-
-function toggleComplete(id) {
-    if (completed[id]) delete completed[id];
-    else completed[id] = true;
-
-    saveProgress(completed);
-    renderLessons();
-    updateStats();
 }
 
 function updateStats() {
@@ -50,7 +86,7 @@ function updateStats() {
 }
 
 function resetProgress() {
-    if (confirm("Biztosan törölsz mindent?")) {
+    if (confirm("Biztosan törölsz mindent az AKTUÁLIS felhasználónál?")) {
         completed = {};
         resetProgressStorage();
         renderLessons();

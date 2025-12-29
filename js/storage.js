@@ -1,11 +1,46 @@
+
+
+function getActiveUser() {
+    return localStorage.getItem('activeUser') || 'Vendég';
+}
+
+function setActiveUser(name) {
+    localStorage.setItem('activeUser', name);
+}
+
+
+
+function loadAllProgress() {
+    return JSON.parse(localStorage.getItem('progressByUser') || '{}');
+}
+
+function saveAllProgress(all) {
+    localStorage.setItem('progressByUser', JSON.stringify(all));
+}
+
+
+
 function loadProgress() {
-    return JSON.parse(localStorage.getItem('progress') || '{}');
+    const user = getActiveUser();
+    const all = loadAllProgress();
+    return all[user] || {};
 }
 
 function saveProgress(data) {
-    localStorage.setItem('progress', JSON.stringify(data));
+    const user = getActiveUser();
+    const all = loadAllProgress();
+    all[user] = data;
+    saveAllProgress(all);
 }
 
 function resetProgressStorage() {
-    localStorage.removeItem('progress');
+    const user = getActiveUser();
+    const all = loadAllProgress();
+    delete all[user];           
+    saveAllProgress(all);
+}
+
+
+function getUsers() {
+    return Object.keys(loadAllProgress());
 }
