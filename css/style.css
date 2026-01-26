@@ -180,6 +180,7 @@ h1 {
     background: #3e8e41;
 }
 
+
 .code-runner {
     background: #1e1e1e;
     padding: 15px;
@@ -187,7 +188,14 @@ h1 {
     margin-top: 20px;
     color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
 
 .code-input {
     width: 100%;
@@ -200,10 +208,14 @@ h1 {
     font-family: Consolas, monospace;
     font-size: 14px;
     resize: vertical;
+
+    box-sizing: border-box;  
+    display: block;
+    margin: 0;
 }
 
 .run-btn {
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 8px 16px;
     background: #4caf50;
     border: none;
@@ -212,6 +224,8 @@ h1 {
     cursor: pointer;
     font-weight: bold;
     transition: 0.2s;
+
+    align-self: flex-start; 
 }
 
 .run-btn:hover {
@@ -219,8 +233,9 @@ h1 {
     transform: scale(1.05);
 }
 
+
 .output-box {
-    margin-top: 10px;
+    margin-top: 5px;
     background: #0e0e0e;
     border: 1px solid #333;
     padding: 10px;
@@ -229,6 +244,9 @@ h1 {
     overflow-y: auto;
     border-radius: 8px;
     font-family: Consolas, monospace;
+
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .output-box.error {
@@ -247,4 +265,57 @@ h1 {
 
 .result {
     color: #79c0ff;
+}
+
+.output-log {
+    margin-top: 4px;
+    padding: 8px;
+    border-radius: 6px;
+    background: #111;
+    color: #0f0;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+
+.dom-demo-box {
+    margin: 10px 0 20px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #f5f7ff;
+    border: 1px solid #c5d0ff;
+}
+
+.dom-demo-box h3 {
+    margin: 0;
+}
+.user-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.user-bar span {
+    font-weight: bold;
+}
+
+.user-bar select {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.btn-user {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #2196f3;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-user:hover {
+    background: #0b7dda;
 }
