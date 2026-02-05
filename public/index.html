@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="hu"> 
+<head>
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tanulási Előrehaladás</title> 
+ <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+    
+<div class="container" id="mainView">
+
+     <!-- FELHASZNÁLÓ SÁV -->
+       <div class="user-bar"> 
+<span>Felhasználó:</span> 
+<select id="userSelect"></select> 
+<button class="btn-user" onclick="addUser()">+ Új</button> 
+<button class="btn-user" onclick="deleteUser()">🗑 Törlés</button>
+ </div>
+
+ <h1>📚 Tanulási Előrehaladás</h1>
+  <p class="subtitle">Kövesd nyomon a fejlődésedet!</p>
+
+<div class="stats"> 
+   <div class="stat-card"> 
+   <div class="stat-number" id="completedCount">0</div>
+ <div>Teljesített</div> 
+</div> 
+    <div class="stat-card"> 
+    <div class="stat-number" id="remainingCount">10</div>
+    <div>Hátra van</div> 
+     </div> 
+     <div class="stat-card"> 
+    <div class="stat-number" id="percentage">0%</div>
+     <div>Haladás</div>
+    </div> 
+</div>
+     <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="lessons" id="lessonsContainer"></div>
+
+     <center> 
+        <button class="btn-reset" onclick="resetProgress()">🔄 Újrakezdés</button> 
+    </center> 
+
+   </div>
+
+    <script src="js/lessons.js"></script>
+    <script src="js/storage.js"></script>  
+    <script src="js/main.js"></script>
+
+</body>
+</html>
